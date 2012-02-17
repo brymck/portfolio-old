@@ -1,0 +1,39 @@
+#!/usr/bin/env ruby -Ku
+autoload :YAML, "yaml"
+
+# Pygmentize code if the -y flag is passed or user answer begins with a y
+pygmentize = if ARGV.include?("-y")
+               true
+             elsif ARGV.include?("-n")
+               false
+             else
+               print "Pygmentize code? (Y/N) "
+               gets =~ /y/i
+             end
+
+if pygmentize
+  code_samples = []
+  puts "Pygmentizing selected code..."
+  YAML.load_file(File.expand_path("targets.yml")).each do |target|
+    in_path  = "code/#{target["path"]}"
+    out_path = "tex/#{File.basename(in_path, ".*")}.tex"
+    result   = %x[pygmentize -f latex -O encoding=utf-8,style=github -o #{out_path} #{in_path}]
+    puts result
+
+    code_samples << { :name => target["name"], :url => "https://github.com/brymck/#{target["path"]}", :path => out_path }
+  end
+
+  File.open(File.expand_path("code.tex"), "w") do |file|
+    code_samples.each do |sample|
+      long_url  = sample[:url]
+      short_url = sample[:url].sub(/^https?:\/\/(?:www\.)?/, "")
+
+      file.puts "\\section{#{sample[:name]}}"
+      file.puts "\\href{#{long_url}}{#{short_url}}"
+      file.puts "\\input{#{sample[:path]}}"
+      file.puts "\\pagebreak"
+    end
+  end
+end
+
+puts %x[latexmk -pdf portfolio.tex -quiet -silent]

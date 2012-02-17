@@ -1,0 +1,75 @@
+\documentclass[a4paper,margin,line]{book}
+
+\usepackage{xltxtra}
+\XeTeXlinebreaklocale"en"
+\setmainfont[Mapping=tex-text]{Hiragino Mincho Pro W3}
+\linespread{1.05}
+
+% Hide the word "Chapter" in chapter titles
+\renewcommand{\chaptername}{}
+
+\usepackage{url}
+\usepackage{relsize}
+\usepackage{lipsum}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+
+\special{papersize=210mm,297mm}
+\author{Bryan McKelvey}
+\title{
+\Huge Portfolio \\
+\small\href{http://www.brymck.com/portfolio.pdf}{brymck.com/portfolio.pdf}
+}
+
+\usepackage{fancyvrb}
+\usepackage{color}
+\usepackage{titlesec}
+\titlespacing*{\chapter}{0pt}{-50pt}{20pt}
+
+% C plus plus
+\def\CPP{C\kern-.14em\raise.40ex\hbox{\textbf{\smaller{++}}}}
+
+% C sharp
+\newcommand\CS{C\kern-.14em\raise.40ex\hbox{\textbf{\smaller\#}}}
+
+\newcommand{\codesample}[3]{#1 (\href{#2}{#3})}
+
+\oddsidemargin -.5in
+\evensidemargin -.5in
+\textwidth=7.0in
+\itemsep=0in
+\parsep=0in
+
+% Smaller bullet
+\newcommand{\sbt}{\,\begin{picture}(-1,1)(-1,-3)\circle*{3}\end{picture}\ }
+
+\newenvironment{list1}{
+  \vspace{.05in}
+  \begin{list}{\ding{113}}{%
+      \setlength{\itemsep}{0in}
+      \setlength{\parsep}{0in} \setlength{\parskip}{0in}
+      \setlength{\topsep}{0in} \setlength{\partopsep}{0in}
+      \setlength{\leftmargin}{0.17in}}}{\end{list}}
+\newenvironment{list2}{
+  \begin{list}{$\sbt$}{%
+      \setlength{\itemsep}{0in}
+      \setlength{\parsep}{0in} \setlength{\parskip}{0in}
+      \setlength{\topsep}{0in} \setlength{\partopsep}{0in}
+      \setlength{\leftmargin}{0.2in}}}{\end{list}}
+
+\input{pygments.tex}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\chapter{English Resume}
+\input{code/resume/en.tex}
+
+\chapter{日本語のレジメ}
+\input{code/resume/ja.tex}
+
+\chapter{Code}
+\input{code.tex}
+
+\end{document}

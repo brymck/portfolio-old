@@ -1,0 +1,15 @@
+- 
+  name: Real-Time Data Server for Excel (\CS{})
+  path: finansu/FinAnSu/Web/RTD.cs
+- 
+  name: Option Pricing (C)
+  path: rupee/ext/rupee/option.c
+- 
+  name: Generic Class for Managing Office Translations (Ruby)
+  path: konjac/lib/konjac/office/base.rb
+- 
+  name: More Specific Mac Implementation (Ruby)
+  path: konjac/lib/konjac/office/mac/shared.rb
+- 
+  name: Word for Mac Interface (Ruby)
+  path: konjac/lib/konjac/office/mac/word.rb

@@ -1,0 +1,15 @@
+[submodule "code/finansu"]
+	path = code/finansu
+	url = git://github.com/brymck/finansu.git
+[submodule "code/konjac"]
+	path = code/konjac
+	url = git://github.com/brymck/konjac.git
+[submodule "code/prisma_quotes"]
+	path = code/prisma_quotes
+	url = git://github.com/brymck/prisma_quotes.git
+[submodule "code/resume"]
+	path = code/resume
+	url = git://github.com/brymck/resume.git
+[submodule "code/rupee"]
+	path = code/rupee
+	url = git://github.com/brymck/rupee.git
